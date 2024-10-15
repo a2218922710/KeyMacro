@@ -70,7 +70,7 @@ void ThreadHandle::startKeyThread(const QList<Qt::Key> &argList, int keyMode, in
         case 0:
             vkCode = ComFunc::getInstance()->MapKeyToVkCode(argList.at(0));
             if(LKey_UNKNOWN == vkCode)
-                return;
+                continue;
             keybd_event(vkCode, 0, 0, 0);
             QThread::msleep(mesc);
             break;
