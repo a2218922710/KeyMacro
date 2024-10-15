@@ -19,7 +19,7 @@ struct ModelArg{
 
     Qt::Key     qKey;
 
-    ModelArg() :x(0), y(0) {}
+    ModelArg() :x(0), y(0), qKey(Qt::Key_unknown) {}
 };
 
 Q_DECLARE_METATYPE(ModelArg)

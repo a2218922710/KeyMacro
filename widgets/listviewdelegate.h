@@ -46,9 +46,9 @@ private:
     InputType           m_inputType;
 
     QLabel              *m_xLabel;
-    QLineEdit           *m_xLine;
+    InputLineedit       *m_xLine;
     QLabel              *m_yLabel;
-    QLineEdit           *m_yLine;
+    InputLineedit       *m_yLine;
 
     QLabel              *m_keyLabel;
     InputLineedit       *m_keyLine;

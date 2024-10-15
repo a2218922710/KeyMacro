@@ -37,6 +37,8 @@ include($$PWD/languages/languages.pri)
 
 DESTDIR = $$SW_PROJECT_OUT
 
+TARGET = keymacro
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin

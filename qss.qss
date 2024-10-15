@@ -1,0 +1,10 @@
+QLineEdit {
+    border: 1px solid #D7D9DE;
+    border-radius: 4px;
+    color: #8B97AF;
+    padding: 4px 10px 4px 10px;
+}
+
+QRadioButton{
+    color: #5A5A5A;
+}

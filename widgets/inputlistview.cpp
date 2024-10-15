@@ -20,19 +20,18 @@ InputListView::InputListView(InputType inputType, QWidget *parent)
 
     connect(m_delegate, &ListViewDelegate::SigArgChanged, this, [=](ModelArg arg, int row) {
         m_model->AmendItem(arg, row);
-        this->Update();
     });
 
-
     QList<ModelArg> list;
-    ModelArg arg1, arg2,arg3;
-    list << arg1 << arg2 << arg3;
+    ModelArg arg1;
+    arg1.qKey = Qt::Key_F;
+    arg1.showKeyWord = "Key_F";
+    list << arg1;
     m_model->SetData(list);
 
     this->setItemDelegate(m_delegate);
     this->setModel(m_model);
     this->Update();
-
 }
 
 void InputListView::AddItem()

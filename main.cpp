@@ -11,6 +11,11 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+    QApplication::setWindowIcon(QIcon(":/delicious.svg"));
+
+    QFont font("Microsoft YaHei");
+    font.setPixelSize(12);
+    a.setFont(font);
 
     QString qss;
     QFile qssFile(":/qss.qss");

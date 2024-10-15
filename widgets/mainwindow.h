@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "inputlistview.h"
+#include "dialogtitle.h"
 
 #include <QDialog>
 #include <QRadioButton>
@@ -33,7 +34,10 @@ private:
     QPushButton       *    m_clearMouseBtn;
     QLineEdit         *    m_mouseDelayLineEdit;
     InputListView     *    m_mouseListView;
-    bool m_test = false;;
+    bool m_test = false;
+
+    QWidget           *    m_centerWidget;
+    DialogTitle       *    m_dialogTitle;
 };
 
 #endif // MAINWINDOW_H

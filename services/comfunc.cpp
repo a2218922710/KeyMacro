@@ -1,4 +1,7 @@
 ﻿#include "comfunc.h"
+
+#include <QGraphicsDropShadowEffect>
+#include <QWidget>
 // 初始化静态成员变量
 ComFunc* ComFunc::instance = nullptr;
 QMutex ComFunc::mutex;
@@ -8,13 +11,13 @@ ComFunc::ComFunc()
 
 }
 
-void ComFunc::StartKeyThread(const QList<Qt::Key>& keyList, int keyMode, int msec)
+bool ComFunc::StartKeyThread(const QList<Qt::Key>& keyList, int keyMode, int msec)
 {
     if(m_keyThread) {
         StopKeyThread();
     }
     m_keyThread = new ThreadHandle;
-    m_keyThread->StartKeyThread(keyList, keyMode, msec);
+    return m_keyThread->StartKeyThread(keyList, keyMode, msec);
 }
 
 void ComFunc::StopKeyThread()
@@ -24,13 +27,13 @@ void ComFunc::StopKeyThread()
     m_keyThread->StopThread();
 }
 
-void ComFunc::StartMouseThread(const QList<QPoint> &posList, int clickMode, int msec)
+bool ComFunc::StartMouseThread(const QList<QPoint> &posList, int clickMode, int msec)
 {
     if(m_mouseThread) {
         StopMouseThread();
     }
     m_mouseThread = new ThreadHandle;
-    m_mouseThread->StartMouseThread(posList, clickMode, msec);
+    return m_mouseThread->StartMouseThread(posList, clickMode, msec);
 }
 
 void ComFunc::StopMouseThread()
@@ -38,6 +41,15 @@ void ComFunc::StopMouseThread()
     if(!m_mouseThread)
         return;
     m_mouseThread->StopThread();
+}
+
+void ComFunc::SetWidgetShadow(QWidget *widget)
+{
+    QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect(widget);
+    shadow->setOffset(0, 8);
+    shadow->setColor(QColor(0,0,0,76));
+    shadow->setBlurRadius(26);
+    widget->setGraphicsEffect(shadow);
 }
 
 void ComFunc::DoPressAct(int x, int y, int type_id)

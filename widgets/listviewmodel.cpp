@@ -34,9 +34,7 @@ void ListViewModel::AmendItem(const ModelArg &arg, int row)
 {
     if(m_argList.size() < row)
         return;
-    beginResetModel();
     m_argList[row] = arg;
-    endResetModel();
 }
 
 void ListViewModel::DeleteAllItems()

@@ -1,25 +1,187 @@
-﻿QWidget {
-background: #FFFFFF;
+﻿QWidget#mainWidget
+{
+    background: #FFFFFF;
+    border-radius: 4px;
 }
 
 QLineEdit {
     border: 1px solid #D7D9DE;
     border-radius: 4px;
-    padding: 4px 10px 4px 10px;
+    padding: 0px 4px 0px 4px;
     color: #242F44;
 }
 
-QPushButton {
-border-radius: 4px;
-color: #36425A;
-font-size: 12px;
-border: 1px solid #D7D9DE;
-background: #FFFFFF;
-color: #242F44;
+/* 单选框 */
+QRadioButton::indicator::unchecked {
+    border-image: url(:/radio_unchecked.svg);
 }
-QPushButton:hover {
-background: rgba(198, 206, 214, 0.2);
+
+QRadioButton::indicator:unchecked:hover {
+    border-image: url(:/radio_unchecked_hover.svg);
 }
-QPushButton:pressed{
-background: rgba(198, 206, 214, 0.4);
+
+QRadioButton::indicator:unchecked:pressed {
+    border-image: url(:/radio_unchecked_pressed.svg);
 }
+
+QRadioButton::indicator::checked {
+    border-image: url(:/radio_checked.svg);
+}
+
+QRadioButton::indicator:checked:hover {
+    border-image: url(:/radio_checked_hover.svg);
+}
+
+QRadioButton::indicator:checked:pressed {
+    border-image: url(:/radio_checked_pressed.svg);
+}
+
+/* 清除跟增加item按钮 */
+QPushButton#addKeyBtn,
+QPushButton#clearKeyBtn,
+QPushButton#addMouseBtn,
+QPushButton#clearMouseBtn
+{
+    border:none;
+    color: #4553C7;
+}
+
+QPushButton#addKeyBtn:hover,
+QPushButton#clearKeyBtn:hover,
+QPushButton#addMouseBtn:hover,
+QPushButton#clearMouseBtn:hover
+{
+    color: #4553C7;
+    text-decoration:underline;
+}
+
+QPushButton#addKeyBtn:pressed,
+QPushButton#clearKeyBtn:pressed,
+QPushButton#addMouseBtn:pressed,
+QPushButton#clearMouseBtn:pressed
+{
+    color: #2F35A4;
+}
+
+DialogTitle CBtn#closeBtn
+{
+    border-radius: 4px;
+    background: transparent;
+    border-image:url(:/close.svg);
+    border: none;
+}
+
+DialogTitle CBtn#helpBtn
+{
+    border-radius: 4px;
+    background: transparent;
+    image:url(:/help.svg);
+    border: none;
+    padding: 5px 5px 5px 5px;
+}
+
+DialogTitle CBtn#closeBtn:hover,
+DialogTitle CBtn#helpBtn:hover
+{
+    background: #F2F2F2;
+}
+
+DialogTitle CBtn#closeBtn:pressed,
+DialogTitle CBtn#helpBtn:pressed
+{
+    background: #E6E6E6;
+}
+
+QLabel#line {
+    border: 1px solid #DBDBDB;
+    background-color: #DBDBDB;
+}
+
+QListView
+{
+    background: #FFFFFF;
+    border: 1px solid #DBDBDB;
+    border-radius: 4px;
+}
+
+/* listview中的item */
+QListView::item
+{
+    background-color:#FFFFFF;
+}
+
+QListView:focus{
+    outline: 0px;
+}
+
+QPushButton#delItemBtn{
+    border-radius: 8px;
+    border-image:url(:/input_closure_normal.svg);
+}
+
+QPushButton#delItemBtn:hover{
+    border-image:url(:/input_closure_hover.svg);
+}
+
+QPushButton#delItemBtn:pressed{
+    border-image:url(:/input_closure_pressed.svg);
+}
+
+QScrollBar:vertical
+{
+    border: none;
+    background: transparent;
+    width: 8px;
+}
+
+QScrollBar::handle:vertical
+{
+    border-radius: 4px;
+    background: #DBDBDB;
+}
+
+QScrollBar::handle:vertical:hover
+{
+    background: #CCCCCC;
+}
+
+QScrollBar::handle:vertical:pressed
+{
+    background: #919191;
+}
+
+QScrollBar::add-line:vertical
+{
+    border: none;
+    background: transparent;
+}
+
+QScrollBar::sub-line:vertical
+{
+    border: none;
+    background: transparent;
+}
+
+TipDialog QWidget#centerWidget
+{
+    background: #FFFFFF;
+    border-radius: 4px;
+}
+
+TipDialog QPushButton#okBtn
+{
+    border-radius: 4px;
+    border: 1px solid #D7D9DE;
+    background: transparent;
+}
+
+TipDialog QPushButton#okBtn:hover
+{
+    background: #F2F2F2;
+}
+
+TipDialog QPushButton#okBtn:pressed
+{
+    background: #DBDBDB;
+}
+

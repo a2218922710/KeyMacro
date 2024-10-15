@@ -27,18 +27,18 @@ QWidget *ListViewDelegate::createEditor(QWidget *parent, const QStyleOptionViewI
 
 QSize ListViewDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-    return QSize(option.rect.width(), 40);
+    return QSize(option.rect.width(), 30);
 }
 
 InputWidget::InputWidget(InputType input, QWidget *parent)
     : QWidget(parent),
       m_inputType(input),
       m_xLabel(new QLabel(this)),
-      m_xLine(new QLineEdit(this)),
+      m_xLine(new InputLineedit(MouseType, this)),
       m_yLabel(new QLabel(this)),
-      m_yLine(new QLineEdit(this)),
+      m_yLine(new InputLineedit(MouseType, this)),
       m_keyLabel(new QLabel(this)),
-      m_keyLine(new InputLineedit(this)),
+      m_keyLine(new InputLineedit(KeyType, this)),
       m_delBtn(new QPushButton(this)),
       m_signalFlag(true)
 {
@@ -78,19 +78,35 @@ InputWidget::InputWidget(InputType input, QWidget *parent)
     lyt->addWidget(m_keyLine);
     lyt->addWidget(m_delBtn);
 
-    connect(m_xLine, &QLineEdit::textChanged, this, [=](){
+    QIntValidator *xvalidator = new QIntValidator(0, INT_MAX, m_xLine);
+    m_xLine->setValidator(xvalidator);
+
+    QIntValidator *yvalidator = new QIntValidator(0, INT_MAX, m_yLine);
+    m_yLine->setValidator(yvalidator);
+
+    m_xLine->setFixedHeight(24);
+    m_yLine->setFixedHeight(24);
+    m_keyLine->setFixedHeight(24);
+
+    connect(m_xLine, &InputLineedit::SigFocusOut, this, [=](){
         if(m_signalFlag)
             emit SigArgChanged(this->GetArg());
     });
-    connect(m_yLine, &QLineEdit::textChanged, this, [=](){
+    connect(m_yLine, &InputLineedit::SigFocusOut, this, [=](){
         if(m_signalFlag)
             emit SigArgChanged(this->GetArg());
     });
-    connect(m_keyLine, &QLineEdit::textChanged, this, [=](){
+    connect(m_keyLine, &InputLineedit::textChanged, this, [=](){
         if(m_signalFlag)
             emit SigArgChanged(this->GetArg());
     });
-    connect(m_delBtn, &QPushButton::clicked, this, &InputWidget::SigCurrentWidgetRemove);
+
+    m_delBtn->setObjectName("delItemBtn");
+    m_delBtn->setFixedSize(16, 16);
+    connect(m_delBtn, &QPushButton::clicked, this, [=](){
+        m_signalFlag = false;
+        emit SigCurrentWidgetRemove();
+    });
 
     this->setLayout(lyt);
 }

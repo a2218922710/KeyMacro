@@ -13,11 +13,14 @@ ThreadHandle::ThreadHandle(QObject * parent )
 bool ThreadHandle::StartKeyThread(const QList<Qt::Key> &argList, int keyMode, int mesc)
 {
     bool isHasKey = false;
-    for(int i = 0; argList.size(); ++i) {
-        isHasKey |= argList.at(i) != Qt::Key_unknown;
+    for(int i = 0; i < argList.size(); ++i) {
+        isHasKey |= (argList.at(i) != Qt::Key_unknown);
         if(isHasKey)
             break;
     }
+
+    if(!isHasKey)
+        return false;
 
     QThread * th = new QThread;
     moveToThread(th);

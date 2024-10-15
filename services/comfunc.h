@@ -27,11 +27,13 @@ public:
         instance = nullptr;
     }
 
-    void StartKeyThread(const QList<Qt::Key>& keyList, int keyMode, int msec);
+    bool StartKeyThread(const QList<Qt::Key>& keyList, int keyMode, int msec);
     void StopKeyThread();
 
-    void StartMouseThread(const QList<QPoint> &posList, int clickMode, int msec);
+    bool StartMouseThread(const QList<QPoint> &posList, int clickMode, int msec);
     void StopMouseThread();
+
+    void SetWidgetShadow(QWidget * widget);
 
     // 鼠标点击
     void DoPressAct(int x, int y, int type_id);
