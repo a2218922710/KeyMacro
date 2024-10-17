@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,6 +28,7 @@ CONAN_OUT_DIR = $$CONAN_FILE_DIR/dependents/$$SPEC/$$SWQ_BUILD_TYPE()/
 
 # 安裝和清理依赖库
 $$SWQ_INSTALL_QTLIB($$(QTDIR), $$SW_PROJECT_OUT)
+$$SWQ_COPY_FILE($$PWD/config/qt.conf, $$SW_PROJECT_OUT)
 
 #模块
 include($$PWD/GlobalMouseKey/GlobalMouseKey.pri)

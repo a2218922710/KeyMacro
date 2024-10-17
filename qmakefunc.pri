@@ -151,14 +151,14 @@ defineReplace(SWQ_INSTALL_QTLIB) {
 
     }
 
-#    win32 {
-#        $$SWQ_COPY_QT_PLUGIN_EXCLUDING_DEBUG($$INPUT, $$OUT)
-#        $$SWQ_COPY_DIR($$INPUT/plugins, $$OUT/qt/plugins)
-#    } else {
-#        $$SWQ_COPY_DIR($$INPUT/plugins, $$OUT/qt/plugins)
-#       $$SWQ_COPY_FILE($$INPUT/lib/libQt5XcbQpa*.so.5, $$OUT)
-#        $$SWQ_COPY_FILE($$INPUT/lib/libQt5DBus*.so.5, $$OUT)
-#    }
+    win32 {
+        $$SWQ_COPY_QT_PLUGIN_EXCLUDING_DEBUG($$INPUT, $$OUT)
+        $$SWQ_COPY_DIR($$INPUT/plugins, $$OUT/qt/plugins)
+    } else {
+        $$SWQ_COPY_DIR($$INPUT/plugins, $$OUT/qt/plugins)
+       $$SWQ_COPY_FILE($$INPUT/lib/libQt5XcbQpa*.so.5, $$OUT)
+        $$SWQ_COPY_FILE($$INPUT/lib/libQt5DBus*.so.5, $$OUT)
+    }
 
     # 拷贝翻译文件
     QM_FILE_OUT = $$OUT/languages

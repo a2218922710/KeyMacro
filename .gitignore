@@ -1,0 +1,8 @@
+*.pro.user
+conanfile/dependents/*
+build/*
+build-*/*
+*.qm
+.vscode/*
+build.bat
+qmake.bat
